@@ -1,0 +1,55 @@
+ <!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <include file="example.xml"/>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        
+    </package>
+    
+    <package name="actionsupportpackage" extends="struts-default">
+        
+        <action name="Usuarios" method="execute" class="actionsupportpackage.AddLogin">
+            <result name="success" >administrator.jsp</result>
+            <result name="none" >usuario.jsp</result>
+            <result name="login" >profesor.jsp</result>
+            
+            <result name="input" >InicioSesion.jsp</result>
+        </action>
+        
+        <action name="Insertar" method="execute" class="actionsupportpackage.InsertUser">
+        <result name="success" >OutputInsertUsuario.jsp</result>
+        </action>
+        
+        <action name="delete" method="execute" class="actionsupportpackage.DeletAction">
+            <result name="success" >Listaborrado.jsp</result>
+        </action>
+
+        <action name="deleteuser" method="execute" class="actionsupportpackage.DeleteUser">
+            <result name="success" >OutputDeleteAdministrator.jsp</result>
+        </action>
+        
+        <action name="menu" method="execute" class="actionsupportpackage.ListaMenu">
+            <result name="success" >administrator.jsp</result>
+        </action> 
+        
+        <action name="UpdateAdministrator" method="execute" class="actionsupportpackage.UpdateAdministrator">
+            <result name="success" >UpdateUser.jsp</result>
+        </action>
+        
+        <action name="actualizar" method="execute" class="actionsupportpackage.UpdateAdministrator2">
+        <result name="success" >OutputUpdateAdministrator.jsp</result>
+        </action>
+        
+        <action name="listaexamenes" method="execute" class="actionsupportpackage.VerExamen">
+        <result name="success" >VerExamenes.jsp</result>
+        </action>
+        
+        <action name="AddExamenlectura" method="execute" class="actionsupportpackage.CrearExamenTipoLectura">
+        <result name="success" >CrearExamenP1.jsp</result>
+        </action>
+        
+    </package>
+</struts>

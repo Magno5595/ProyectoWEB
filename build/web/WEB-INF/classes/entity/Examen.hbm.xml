@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/06/2018 04:40:13 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Examen" table="examen" catalog="proyectowad" optimistic-lock="version">
+        <id name="idexamen" type="java.lang.Integer">
+            <column name="idexamen" />
+            <generator class="identity" />
+        </id>
+        <property name="nombreexamen" type="string">
+            <column name="nombreexamen" length="45" not-null="true" />
+        </property>
+        <set name="tipolecturaexamens" table="tipolecturaexamen" inverse="true" lazy="true" fetch="select" cascade="all">
+            <key>
+                <column name="idexamen" not-null="true" />
+            </key>
+            <one-to-many class="entity.Tipolecturaexamen" />
+        </set>
+        <set name="tipoescrituraexamens" table="tipoescrituraexamen" inverse="true" lazy="true" fetch="select" cascade="all">
+            <key>
+                <column name="idexamen" not-null="true" />
+            </key>
+            <one-to-many class="entity.Tipoescrituraexamen" />
+        </set>
+    </class>
+</hibernate-mapping>
