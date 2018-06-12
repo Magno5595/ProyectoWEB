@@ -15,7 +15,7 @@ public class Preguntalectura  implements java.io.Serializable {
      private Tipolecturaexamen tipolecturaexamen;
      private String oracionpregunta;
      private Set respuestapreguntases = new HashSet(0);
-
+     
     public Preguntalectura() {
     }
 

@@ -14,7 +14,7 @@
         <property name="oracionpregunta" type="string">
             <column name="oracionpregunta" length="45" not-null="true" />
         </property>
-        <set name="respuestapreguntases" table="respuestapreguntas" inverse="true" lazy="true" fetch="select">
+        <set name="respuestapreguntases" table="respuestapreguntas" inverse="true" lazy="true" fetch="select" cascade="all">
             <key>
                 <column name="idpregunta" not-null="true" />
             </key>

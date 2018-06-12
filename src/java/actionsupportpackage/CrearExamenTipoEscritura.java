@@ -9,11 +9,12 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import entity.Examen;
 import entity.Tipoescrituraexamen;
+import entity.Preguntalectura;
 import entity.HibernateUtil;
 import java.util.HashSet;
 import java.util.Set;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 /**
  *
@@ -21,29 +22,38 @@ import org.hibernate.Transaction;
  */
 public class CrearExamenTipoEscritura extends ActionSupport {
     
-    private Integer idexamen;
+     private Integer idexamen;
+     private String examenes;
      private String nombreexamen;
-     private Set tipolecturaexamens = new HashSet(0);
+     private String descripcion;
+     
+     
      private Set tipoescrituraexamens = new HashSet(0);
+     
+     
+     
+     
 
    public String execute() throws Exception 
     {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
+        
+        
+  
+       
          
-        Examen examen = new Examen("Examen segunda  ");
+        Examen examen = (Examen) session.createQuery(" from Examen where nombreexamen='"+examenes+"'").uniqueResult();
         //public Product(Category category, String name, String description, float price)
-        Tipoescrituraexamen primera = new Tipoescrituraexamen(examen,"Haz esto 1", "Quad-core PC1");
-        Tipoescrituraexamen segunda = new Tipoescrituraexamen(examen,"Haz esto 2", "Quad-core PC2");
-        Tipoescrituraexamen tercera = new Tipoescrituraexamen(examen,"Haz esto 3", "Quad-core PC3");
-        Tipoescrituraexamen cuarta = new Tipoescrituraexamen(examen,"Haz esto 4", "Quad-core PC4");
+        Tipoescrituraexamen primera = new Tipoescrituraexamen(examen,descripcion, "Quad-core PC1");
+        
+        
+        
          
         Set<Tipoescrituraexamen> escrituras = new HashSet<Tipoescrituraexamen>();
         escrituras.add(primera);
-        escrituras.add(segunda);
-        escrituras.add(tercera);
-        escrituras.add(cuarta);        
+                
          
         examen.setTipoescrituraexamens(escrituras);
          
@@ -55,6 +65,18 @@ public class CrearExamenTipoEscritura extends ActionSupport {
         return SUCCESS;
  }  
 
+    public String getExamenes() {
+        return examenes;
+    }
+
+    public void setExamenes(String examenes) {
+        this.examenes = examenes;
+    }
+
+  
+ 
+   
+   
  public Integer getIdexamen() {
         return this.idexamen;
     }
@@ -69,13 +91,7 @@ public class CrearExamenTipoEscritura extends ActionSupport {
     public void setNombreexamen(String nombreexamen) {
         this.nombreexamen = nombreexamen;
     }
-    public Set getTipolecturaexamens() {
-        return this.tipolecturaexamens;
-    }
     
-    public void setTipolecturaexamens(Set tipolecturaexamens) {
-        this.tipolecturaexamens = tipolecturaexamens;
-    }
     public Set getTipoescrituraexamens() {
         return this.tipoescrituraexamens;
     }
@@ -83,7 +99,18 @@ public class CrearExamenTipoEscritura extends ActionSupport {
     public void setTipoescrituraexamens(Set tipoescrituraexamens) {
         this.tipoescrituraexamens = tipoescrituraexamens;
     }
-  
     
+    
+
+    
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+   
     
 }

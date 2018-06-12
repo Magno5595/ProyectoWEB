@@ -3,11 +3,7 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-    <include file="example.xml"/>
-    <!-- Configuration for the default package. -->
-    <package name="default" extends="struts-default">
-        
-    </package>
+    
     
     <package name="actionsupportpackage" extends="struts-default">
         
@@ -44,12 +40,43 @@
         </action>
         
         <action name="listaexamenes" method="execute" class="actionsupportpackage.VerExamen">
-        <result name="success" >VerExamenes.jsp</result>
+        <result name="success" >VerListaExamen.jsp</result>
+        </action>
+        
+        <action name="AddExamen" method="execute" class="actionsupportpackage.CrearExamen">
+        <result name="success" >ExitoCrearExamenP1.jsp</result>
         </action>
         
         <action name="AddExamenlectura" method="execute" class="actionsupportpackage.CrearExamenTipoLectura">
-        <result name="success" >CrearExamenP1.jsp</result>
+        <result name="success" >ExitoCrearLectura.jsp</result>
         </action>
         
+        <action name="AddExamenescritura" method="execute" class="actionsupportpackage.CrearExamenTipoEscritura">
+        <result name="success" >ExitoCrearEscritura.jsp</result>
+        </action>
+        
+        <action name="llenacomboexamen" method="execute" class="actionsupportpackage.LLenadoComboExamenes">
+        <result name="success" >CrearExamenP2.jsp</result>
+        </action>
+        
+        <action name="pruebamandarcombo" method="execute" class="actionsupportpackage.prueba">
+        <result name="success" >prueba.jsp</result>
+        </action>
+        
+         <action name="borrarexamen" method="execute" class="actionsupportpackage.BorrarExamen">
+        <result name="success" >ExitoBorrarExamen.jsp</result>
+        </action>
+        
+        <action name="VerPreguntasExamen" method="execute" class="actionsupportpackage.VerPreguntasDeExamenes">
+        <result name="success" >ListaDePreguntasPorExamen.jsp</result>
+        </action>
+        
+        <action name="PasarValoresCanvas" method="execute" class="actionsupportpackage.ValoresCanvas">
+        <result name="success" >CrearCanvas.jsp</result>
+        </action>
+        
+        <action name="Guardar" method="execute" class="actionsupportpackage.GuardarCanvas">
+        <result name="success" >guardado.jsp</result>
+        </action>
     </package>
 </struts>

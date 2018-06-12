@@ -8,7 +8,7 @@
             <column name="idtipolectura" />
             <generator class="identity" />
         </id>
-        <many-to-one name="examen" class="entity.Examen" fetch="select">
+        <many-to-one name="examen" class="entity.Examen" fetch="select" cascade="all">
             <column name="idexamen" not-null="true" />
         </many-to-one>
         <property name="textotipolectura" type="string">
@@ -17,7 +17,7 @@
         <property name="imagentipolectura" type="string">
             <column name="imagentipolectura" length="100" not-null="true" />
         </property>
-        <set name="preguntalecturas" table="preguntalectura" inverse="true" lazy="true" fetch="select">
+        <set name="preguntalecturas" table="preguntalectura" inverse="true" lazy="true" fetch="select" cascade="all">
             <key>
                 <column name="idtipolectura" not-null="true" />
             </key>
